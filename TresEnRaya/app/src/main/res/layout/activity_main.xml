@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0288D1"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Guía horizontal para mover todo hacia arriba -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <!-- Botón JUGAR -->
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jugar"
+        android:backgroundTint="#FFC107"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/guideline_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Campo número de victorias -->
+    <EditText
+        android:id="@+id/etWinLimit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:hint="Victorias"
+        android:text="3"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:backgroundTint="#FFA000"
+        app:layout_constraintTop_toBottomOf="@id/btnPlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Jugador 1 -->
+    <ImageView
+        android:id="@+id/imgPlayer1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/monstruo1"
+        android:background="@drawable/player_frame"
+        app:layout_constraintTop_toBottomOf="@id/etWinLimit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_center"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvLabelPlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jugador 1"
+        android:textColor="#FFEB3B"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/imgPlayer1"
+        app:layout_constraintStart_toStartOf="@id/imgPlayer1"
+        app:layout_constraintEnd_toEndOf="@id/imgPlayer1"/>
+
+    <TextView
+        android:id="@+id/tvScorePlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFEB3B"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        tools:text="0"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelPlayer1"
+        app:layout_constraintStart_toStartOf="@id/imgPlayer1"
+        app:layout_constraintEnd_toEndOf="@id/imgPlayer1"/>
+
+    <!-- Guía vertical central -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <!-- Jugador 2 -->
+    <ImageView
+        android:id="@+id/imgPlayer2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/monstruo2"
+        android:background="@drawable/player_frame"
+        app:layout_constraintTop_toTopOf="@id/imgPlayer1"
+        app:layout_constraintStart_toEndOf="@id/guideline_center"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvLabelPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jugador 2"
+        android:textColor="#FFEB3B"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/imgPlayer2"
+        app:layout_constraintStart_toStartOf="@id/imgPlayer2"
+        app:layout_constraintEnd_toEndOf="@id/imgPlayer2"/>
+
+    <TextView
+        android:id="@+id/tvScorePlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFEB3B"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        tools:text="0"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelPlayer2"
+        app:layout_constraintStart_toStartOf="@id/imgPlayer2"
+        app:layout_constraintEnd_toEndOf="@id/imgPlayer2"/>
+
+    <!-- Tablero 3x3 -->
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:background="#FF5722"
+        android:padding="2dp"
+        app:layout_constraintTop_toBottomOf="@id/tvScorePlayer1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <!-- 9 celdas con tamaño uniforme y borde blanco -->
+        <ImageView
+            android:id="@+id/img00"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#FFFFFF"
+            android:layout_margin="2dp"/>
+        <ImageView
+            android:id="@+id/img01"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#FFFFFF"
+            android:layout_margin="2dp"/>
+        <ImageView
+            android:id="@+id/img02"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#FFFFFF"
+            android:layout_margin="2dp"/>
+        <ImageView
+            android:id="@+id/img10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#FFFFFF"
+            android:layout_margin="2dp"/>
+        <ImageView
+            android:id="@+id/img11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#FFFFFF"
+            android:layout_margin="2dp"/>
+        <ImageView
+            android:id="@+id/img12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#FFFFFF"
+            android:layout_margin="2dp"/>
+        <ImageView
+            android:id="@+id/img20"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#FFFFFF"
+            android:layout_margin="2dp"/>
+        <ImageView
+            android:id="@+id/img21"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#FFFFFF"
+            android:layout_margin="2dp"/>
+        <ImageView
+            android:id="@+id/img22"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="#FFFFFF"
+            android:layout_margin="2dp"/>
+    </GridLayout>
+
+    <!-- Botón Reiniciar Match -->
+    <Button
+        android:id="@+id/btnResetScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reiniciar Match"
+        android:backgroundTint="#FFC107"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/gridLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Imagen del turno -->
+    <ImageView
+        android:id="@+id/imgTurnPlayer"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/monstruo1"
+        app:layout_constraintTop_toBottomOf="@id/btnResetScores"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

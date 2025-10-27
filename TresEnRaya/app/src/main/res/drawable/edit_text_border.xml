@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+
+    <!-- Borde de 2dp de color verde -->
+    <stroke android:width="2dp" android:color="#66BB6A"/>
+
+    <!-- Fondo de color blanco -->
+    <solid android:color="@android:color/white"/>
+
+    <!-- Esquinas redondeadas con un radio de 8dp -->
+    <corners android:radius="8dp"/>
+
+    <!-- Espacio de relleno interno de 8dp en todos los lados -->
+    <padding android:left="8dp" android:right="8dp" android:top="8dp" android:bottom="8dp"/>
+
+</shape>
