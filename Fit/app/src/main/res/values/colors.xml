@@ -1,0 +1,7 @@
+<resources>
+    <color name="background_light">#FAFAFA</color>
+    <color name="primary_blue">#007AFF</color>
+    <color name="primary_orange">#FF9500</color>
+    <color name="primary_text">#1A1A1A</color>
+    <color name="secondary_text">#777777</color>
+</resources>
