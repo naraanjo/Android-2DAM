@@ -19,10 +19,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.909" />
 
-    <TextView
+    <EditText
         android:id="@+id/txvNombre"
         android:layout_width="164dp"
-        android:layout_height="34dp"
+        android:layout_height="54dp"
         android:text="Álvaro "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,10 +42,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.14" />
 
-    <TextView
+    <EditText
         android:id="@+id/txvApellido"
         android:layout_width="164dp"
-        android:layout_height="34dp"
+        android:layout_height="54dp"
         android:text="Naranjo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +86,7 @@
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.667" />
 
     <CheckBox
         android:id="@+id/chckPersonal"
@@ -109,31 +109,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <RadioButton
+            android:id="@+id/rdbMasculino"
+            android:layout_width="411dp"
+            android:layout_height="50dp"
+            android:text="Masculino" />
+
+        <RadioButton
+            android:id="@+id/rdbFemenino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Femenino" />
     </RadioGroup>
-
-    <RadioButton
-        android:id="@+id/rdbMasculino"
-        android:layout_width="411dp"
-        android:layout_height="50dp"
-        android:text="Masculino"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.381" />
-
-    <RadioButton
-        android:id="@+id/rdbFemenino"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Femenino"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.452" />
 
     <SeekBar
         android:id="@+id/skBarEdad"
@@ -146,7 +133,7 @@
         app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintVertical_bias="0.655" />
 
     <TextView
         android:id="@+id/txvEdad"

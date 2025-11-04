@@ -1,12 +1,16 @@
 package com.example.practicaexamen1
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.SeekBar
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.practicaexamen1.databinding.ActivityMainBinding
+import com.example.practicaexamen1.model.PersonaModel
+import com.example.practicaexamen1.provider.PersonaProvider
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,11 +31,49 @@ class MainActivity : AppCompatActivity() {
         // btnInicio
         binding.btnIniciar.setOnClickListener {
 
-            // Abro la siguiente activity
-            // TODO
+            // Validacion form
+            var valido =validarForm()
+
+            if(valido){
+                Toast.makeText(this, "Registro completado con exito", Toast.LENGTH_SHORT).show()
+
+                // Creo un objeto separando las capas
+                // Con los datos del form
+                val persona = PersonaProvider.crearPersona(binding.txvNombre.text.toString(), binding.txvApellido.text.toString(), binding.skBarEdad.progress,
+                    if (binding.rdbMasculino.isChecked) "Masculino" else "Femenino", binding.chckPersonal.isChecked)
+
+                enviarObjeto(persona) // Envio el objeto creado a la siguiente ventana
+
+            }else{
+                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+            }
+
+
         }
 
     }
+
+    // Validacion del formulario
+    private fun validarForm(): Boolean {
+        var completo = true;
+
+        if (binding.txvNombre.text.toString().isEmpty() || binding.txvApellido.text.toString().isEmpty() || binding.txvEdad.text.toString().isEmpty()
+            || binding.radioGroup.checkedRadioButtonId==-1) {
+            completo = false;
+        }
+
+        return completo
+
+    }
+
+    private fun enviarObjeto(persona: PersonaModel){
+        // Abro la siguiente activity
+        val intent = Intent(this, MainActivity2::class.java);
+        // Envio del objeto
+        intent.putExtra("PERSONA_KEY", persona)
+        startActivity(intent);
+    }
+
 
     // Configuracion de la seekBar
     private fun configurarSeekBar() {
