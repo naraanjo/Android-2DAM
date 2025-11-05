@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+<<<<<<< HEAD
+=======
+    id("kotlin-parcelize")
+>>>>>>> 73ccd21430d0574f227ab328534188615ae2d09d
 }
 
 android {
@@ -33,6 +37,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+<<<<<<< HEAD
+=======
+    buildFeatures{
+        viewBinding = true
+    }
+>>>>>>> 73ccd21430d0574f227ab328534188615ae2d09d
 }
 
 dependencies {
@@ -42,6 +52,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+<<<<<<< HEAD
+=======
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.cardview)
+>>>>>>> 73ccd21430d0574f227ab328534188615ae2d09d
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

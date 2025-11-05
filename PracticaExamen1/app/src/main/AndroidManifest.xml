@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticaExamen1">
         <activity
+<<<<<<< HEAD
+=======
+            android:name=".MainActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+>>>>>>> 73ccd21430d0574f227ab328534188615ae2d09d
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

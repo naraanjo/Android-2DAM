@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
+=======
+    <!-- Paleta profesional y sobria -->
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryDark">#004BA0</color>
+    <color name="colorAccent">#FFC107</color>
+
+    <!-- Fondo y texto -->
+    <color name="backgroundColor">#FAFAFA</color>
+    <color name="cardBackground">#FFFFFF</color>
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#757575</color>
+    <color name="buttonText">#FFFFFF</color>
+
+    <!-- Otros -->
+    <color name="dividerColor">#E0E0E0</color>
+</resources>
+>>>>>>> 73ccd21430d0574f227ab328534188615ae2d09d
