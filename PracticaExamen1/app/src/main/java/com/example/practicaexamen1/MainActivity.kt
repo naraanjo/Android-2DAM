@@ -6,8 +6,6 @@ import android.widget.SeekBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.practicaexamen1.databinding.ActivityMainBinding
 import com.example.practicaexamen1.model.PersonaModel
 import com.example.practicaexamen1.provider.PersonaProvider
@@ -20,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         // Inicio el biding
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -42,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 val persona = PersonaProvider.crearPersona(binding.txvNombre.text.toString(), binding.txvApellido.text.toString(), binding.skBarEdad.progress,
                     if (binding.rdbMasculino.isChecked) "Masculino" else "Femenino", binding.chckPersonal.isChecked)
 
-                enviarObjeto(persona) // Envio el objeto creado a la siguiente ventana
+                enviarObjetoVentana(persona) // Envio el objeto creado a la siguiente ventana
 
             }else{
                 Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
@@ -66,12 +63,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun enviarObjeto(persona: PersonaModel){
-        // Abro la siguiente activity
-        val intent = Intent(this, MainActivity2::class.java);
-        // Envio del objeto
-        intent.putExtra("PERSONA_KEY", persona)
-        startActivity(intent);
+    private fun enviarObjetoVentana(persona: PersonaModel){
+
+        if(persona.personal){
+            // Abro la ventana del personal
+            val intent = Intent(this, MainActivity2::class.java);
+            // Envio del objeto
+            intent.putExtra("PERSONA_KEY", persona)
+            startActivity(intent);
+        }else{
+            // Abro la ventana del usuario
+            val intent = Intent(this, MainActivity3::class.java)
+            // Envio el objeto
+            intent.putExtra("PERSONA_KEY",persona)
+            startActivity(intent) // Inicio la otra activty
+        }
     }
 
 

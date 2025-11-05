@@ -1,149 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rvTareas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:padding="24dp"
     tools:context=".MainActivity">
 
+    <!-- Título principal -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Formulario de Registro"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Etiqueta: Nombre -->
+    <TextView
+        android:id="@+id/lblNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        android:textColor="@color/textPrimary"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <!-- Campo: Nombre -->
+    <EditText
+        android:id="@+id/txvNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Introduce tu nombre"
+        android:backgroundTint="@color/colorPrimary"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/lblNombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Etiqueta: Apellido -->
+    <TextView
+        android:id="@+id/lblApellido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellido:"
+        android:textColor="@color/textPrimary"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/txvNombre"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Campo: Apellido -->
+    <EditText
+        android:id="@+id/txvApellido"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Introduce tu apellido"
+        android:backgroundTint="@color/colorPrimary"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/lblApellido"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- CheckBox -->
+    <CheckBox
+        android:id="@+id/chckPersonal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Eres personal?"
+        android:textColor="@color/textSecondary"
+        app:layout_constraintTop_toBottomOf="@id/txvApellido"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Grupo de género -->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/chckPersonal"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/rdbMasculino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masculino"
+            android:textColor="@color/textPrimary" />
+
+        <RadioButton
+            android:id="@+id/rdbFemenino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Femenino"
+            android:textColor="@color/textPrimary"
+            android:layout_marginStart="16dp"/>
+    </RadioGroup>
+
+    <!-- Edad -->
+    <TextView
+        android:id="@+id/txvEdad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edad: 0"
+        android:textColor="@color/textPrimary"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!-- SeekBar -->
+    <SeekBar
+        android:id="@+id/skBarEdad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progressTint="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/txvEdad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Botón iniciar -->
     <Button
         android:id="@+id/btnIniciar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iniciar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.909" />
-
-    <EditText
-        android:id="@+id/txvNombre"
-        android:layout_width="164dp"
-        android:layout_height="54dp"
-        android:text="Álvaro "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.14" />
-
-    <TextView
-        android:layout_width="164dp"
-        android:layout_height="34dp"
-        android:text="Nombre:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.14" />
-
-    <EditText
-        android:id="@+id/txvApellido"
-        android:layout_width="164dp"
-        android:layout_height="54dp"
-        android:text="Naranjo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219" />
-
-    <TextView
-        android:layout_width="164dp"
-        android:layout_height="34dp"
-        android:text="Apellido"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="164dp"
-        android:layout_height="34dp"
-        android:text="Personal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.296" />
-
-    <TextView
-        android:layout_width="164dp"
-        android:layout_height="34dp"
-        android:text="Edad"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.667" />
-
-    <CheckBox
-        android:id="@+id/chckPersonal"
-        android:layout_width="144dp"
-        android:layout_height="34dp"
-        android:text="Personal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.749"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.295" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:textColor="@color/buttonText"
+        android:backgroundTint="@color/colorPrimary"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="10dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/rdbMasculino"
-            android:layout_width="411dp"
-            android:layout_height="50dp"
-            android:text="Masculino" />
-
-        <RadioButton
-            android:id="@+id/rdbFemenino"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Femenino" />
-    </RadioGroup>
-
-    <SeekBar
-        android:id="@+id/skBarEdad"
-        android:layout_width="152dp"
-        android:layout_height="51dp"
-        android:max="100"
-        android:progress="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.655" />
-
-    <TextView
-        android:id="@+id/txvEdad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.62"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626" />
+        android:layout_marginBottom="36dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

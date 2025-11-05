@@ -39,6 +39,10 @@ class MainActivity2 : AppCompatActivity() {
         binding.txvSaludo.text = personaModel?.nombre
 
 
+        // Vuelve a la activity anterior
+        binding.btnVolver.setOnClickListener {
+            finish()
+        }
 
 
     }
