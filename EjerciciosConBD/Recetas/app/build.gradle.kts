@@ -1,16 +1,15 @@
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-parcelize")
+    id("kotlin-kapt") // Room
 }
 
 android {
-    namespace = "com.example.fit"
+    namespace = "com.example.gestorrecetetas"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.fit"
+        applicationId = "com.example.gestorrecetetas"
         minSdk = 27
         targetSdk = 36
         versionCode = 1
@@ -35,7 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
+    buildFeatures{
         viewBinding = true
     }
 }
@@ -48,10 +47,13 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
-    implementation(libs.androidx.window)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("androidx.core:core-splashscreen:1.0.1") // SPLAHS IMPORTANTE !!
-
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    // Soporte para Corrutinas de Kotlin en Room
+    implementation("androidx.room:room-ktx:$room_version")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }

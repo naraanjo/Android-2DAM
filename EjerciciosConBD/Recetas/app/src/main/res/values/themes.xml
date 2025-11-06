@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GestorRecetetas" parent="Theme.Material3.DayNight.NoActionBar">
+    </style>
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.GestorRecetetas" parent="Base.Theme.GestorRecetetas" />
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+
+
+    <item
+        name="windowSplashScreenBackground">#FFFFFF</item>
+
+    <item
+        name="windowSplashScreenAnimatedIcon">@drawable/outline_breakfast_dining_24</item>
+
+    <item
+        name="postSplashScreenTheme">@style/Base.Theme.GestorRecetetas</item>
+</style>
+
+    </resources>
