@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- TÍTULO DEL DIÁLOGO -->
+        <TextView
+            android:id="@+id/tvDialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crear nueva tarea"
+            android:textColor="@color/primary_dark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- TÍTULO DE LA TAREA -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Título"
+            android:textColor="@color/text_gray"
+            android:textSize="14sp"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:hint="Introduce el título"
+            android:paddingHorizontal="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_gray"
+            android:textSize="16sp" />
+
+        <!-- DESCRIPCIÓN -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción"
+            android:textColor="@color/text_gray"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:hint="Describe la tarea..."
+            android:padding="12dp"
+            android:gravity="top"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_gray"
+            android:textSize="16sp" />
+
+        <!-- FECHA -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            android:textColor="@color/text_gray"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etFecha"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:hint="Seleccionar fecha"
+            android:focusable="false"
+            android:clickable="true"
+            android:paddingHorizontal="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_gray"
+            android:textSize="16sp" />
+
+        <!-- HORA -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hora"
+            android:textColor="@color/text_gray"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etHora"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:hint="Seleccionar hora"
+            android:focusable="false"
+            android:clickable="true"
+            android:paddingHorizontal="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_gray"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</ScrollView>

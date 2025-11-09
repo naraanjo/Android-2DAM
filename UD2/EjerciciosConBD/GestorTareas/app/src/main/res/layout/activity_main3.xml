@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light"
+    tools:context=".MainActivity3">
+
+    <!--
+      Toolbar con corrección para la barra de estado (FIX 1)
+    -->
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="@color/primary_dark"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!--
+          [FIX 2] Se cambió el fondo por el estándar 'actionBarItemBackground'
+          para un 'ripple effect' limpio y sin fondo cuadrado.
+        -->
+        <ImageButton
+            android:id="@+id/btnVolver"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:attr/actionBarItemBackground"
+            android:src="@drawable/ic_arrow_back_white"
+            android:contentDescription="Volver"
+            android:scaleType="centerInside"/>
+
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detalle de Tarea"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
+
+    <!-- Contenido scrollable -->
+    <ScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="32dp">
+
+            <!-- Icono de tarea -->
+            <ImageView
+                android:id="@+id/icon_placeholder"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/icono_app"
+                android:contentDescription="Icono Tarea"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/textTituloTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Título de la tarea"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_dark"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_horizontal"/>
+
+            <!-- Descripción -->
+            <TextView
+                android:id="@+id/textDescripcionTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Descripción completa de la tarea..."
+                android:textSize="16sp"
+                android:textColor="@color/text_gray"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Separador -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_border"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Fecha -->
+            <TextView
+                android:id="@+id/textFechaTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Fecha: 01/01/2025"
+                android:textSize="16sp"
+                android:textColor="@color/text_gray"
+                android:drawableStart="@drawable/ic_calendar"
+                app:drawableTint="@color/text_gray"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Hora -->
+            <TextView
+                android:id="@+id/textHora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Hora: 10:30"
+                android:textSize="16sp"
+                android:textColor="@color/text_gray"
+                android:drawableStart="@drawable/ic_time"
+                app:drawableTint="@color/text_gray"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

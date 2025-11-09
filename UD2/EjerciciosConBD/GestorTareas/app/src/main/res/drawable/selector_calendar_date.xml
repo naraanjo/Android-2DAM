@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Estado seleccionado (cuando el usuario hace clic o la fecha está activa en el Adapter) -->
+    <item android:state_selected="true">
+        <!-- Fondo con esquinas muy redondeadas o circular, usando el color principal oscuro -->
+        <shape android:shape="rectangle">
+            <solid android:color="@color/primary_dark"/>
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+
+    <!-- Estado normal (sin seleccionar) -->
+    <item>
+        <!-- Fondo transparente o el color de fondo de la tarjeta (en este caso, transparente) -->
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent"/>
+        </shape>
+    </item>
+</selector>
