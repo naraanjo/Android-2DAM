@@ -22,12 +22,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
         configListeners()
     }
 
@@ -72,7 +68,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun registroAutomatico(persona: Persona){
         lifecycleScope.launch {
-
             personaDao.insertarPersona(persona)
             Toast.makeText(this@MainActivity, "Acabas de crearte una nueva cuenta: ${persona.nombre}", Toast.LENGTH_LONG).show()
         }

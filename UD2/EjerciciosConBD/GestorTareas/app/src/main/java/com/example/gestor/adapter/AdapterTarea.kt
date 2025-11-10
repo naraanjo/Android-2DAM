@@ -12,24 +12,19 @@ import com.example.gestor.database.Tarea
 import com.example.gestor.databinding.DialogInfoTareaBinding
 
 
-class AdapterTarea(private var tareas: MutableList<Tarea>):
+class AdapterTarea(private var tareas: MutableList<Tarea>, private val onDeleteClick: (Tarea) -> Unit):
     RecyclerView.Adapter<AdapterTarea.TareaViewHolder>(){
 
-
     class TareaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
 
         val descripcion: TextView = itemView.findViewById(R.id.tvDescripcion)
         val fecha: TextView = itemView.findViewById(R.id.tvFecha)
         val titulo: TextView = itemView.findViewById(R.id.tvTitulo)
 
-
     }
 
-
-    // XML item_plato
+    // XML item_tarea
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TareaViewHolder {
-
 
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_tarea, parent, false)
@@ -41,17 +36,12 @@ class AdapterTarea(private var tareas: MutableList<Tarea>):
     // Holder guarda la referencia a cada item -puntero-
     override fun onBindViewHolder(holder: TareaViewHolder, position: Int) {
 
-
-
-
         // Item a item
         // Holder relacionado con el item_tarea.xml
         val tarea = tareas[position]
         holder.descripcion.text = tarea.descripcion
         holder.fecha.text = tarea.fecha
         holder.titulo.text = tarea.titulo
-
-
 
         // Al dejarlo pulsado se elimina
         holder.itemView.setOnLongClickListener {
@@ -62,6 +52,7 @@ class AdapterTarea(private var tareas: MutableList<Tarea>):
                     tareas.removeAt(position)
                     notifyItemRemoved(position)
                     notifyItemRangeChanged(position, itemCount)
+                    onDeleteClick(tarea) // Callback para eliminar la tarea
                     accion.dismiss() // Oculta el dialogo
                 }
                 .setNegativeButton("Cancelar"){dialogo, _ ->

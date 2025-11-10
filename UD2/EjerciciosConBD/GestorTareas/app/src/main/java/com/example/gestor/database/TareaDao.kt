@@ -2,6 +2,7 @@ package com.example.gestor.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -45,6 +46,8 @@ interface TareaDao {
     @Query("SELECT * FROM tarea_tabla WHERE id_persona = :idPersona")
     suspend fun getTareasPorPersonaDirecto(idPersona: Int): MutableList<Tarea>
 
+    @Query("SELECT * FROM tarea_tabla WHERE id_persona = :idPersona AND fecha = :fecha")
+    suspend fun getTareasPorFecha(idPersona: Int, fecha: String): List<Tarea>
 
 
     /**
@@ -52,4 +55,9 @@ interface TareaDao {
      */
     @Query("DELETE FROM tarea_tabla")
     suspend fun eliminarTodasLasTareas()
+
+    @Delete
+    suspend fun eliminar(tarea: Tarea)
 }
+
+

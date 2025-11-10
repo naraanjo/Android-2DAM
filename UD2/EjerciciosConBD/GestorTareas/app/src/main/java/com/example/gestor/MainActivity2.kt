@@ -17,30 +17,19 @@ import com.example.gestor.database.Tarea
 import com.example.gestor.databinding.ActivityMain2Binding
 import com.example.gestor.databinding.DialogNuevaTareaBinding
 import kotlinx.coroutines.launch
-import java.time.LocalDate
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 import java.util.Calendar
 
 class MainActivity2 : AppCompatActivity() {
 
-    // Declaro el binding
     private lateinit var binding: ActivityMain2Binding
-
-    // Declaro el adaptador
     private lateinit var adapter: AdapterTarea
+    private val tareaDao by lazy { GestorDatabase.getDatabase(this).tareaDao() }
 
-    private val tareaDao by lazy {
-        GestorDatabase.getDatabase(this).tareaDao()
-    }
-
+    private var fechaSeleccionada: String = "" // Guardar fecha actual seleccionada
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-
-        // Inicializo el binding
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -48,12 +37,8 @@ class MainActivity2 : AppCompatActivity() {
         configBotones()
     }
 
-
     private fun configBotones() {
-
-        // Boton de añadir una tarea
         binding.fabAddTask.setOnClickListener {
-
             val persona = recogerObjetoPersona()
             if (persona == null) {
                 Toast.makeText(this, "Error: no se encontró la persona", Toast.LENGTH_SHORT).show()
@@ -62,7 +47,7 @@ class MainActivity2 : AppCompatActivity() {
 
             val dialogBinding = DialogNuevaTareaBinding.inflate(layoutInflater)
 
-            // ---- Selector de fecha ----
+            // Selector de fecha
             dialogBinding.etFecha.setOnClickListener {
                 val calendario = Calendar.getInstance()
                 val year = calendario.get(Calendar.YEAR)
@@ -70,22 +55,20 @@ class MainActivity2 : AppCompatActivity() {
                 val day = calendario.get(Calendar.DAY_OF_MONTH)
 
                 DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-                    val fechaSeleccionada = String.format(
-                        "%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay
-                    )
-                    dialogBinding.etFecha.setText(fechaSeleccionada)
+                    val fecha = String.format("%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay)
+                    dialogBinding.etFecha.setText(fecha)
                 }, year, month, day).show()
             }
 
-            // ---- Selector de hora ----
+            // Selector de hora
             dialogBinding.etHora.setOnClickListener {
                 val calendario = Calendar.getInstance()
                 val hora = calendario.get(Calendar.HOUR_OF_DAY)
                 val minuto = calendario.get(Calendar.MINUTE)
 
                 TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-                    val horaSeleccionada = String.format("%02d:%02d", selectedHour, selectedMinute)
-                    dialogBinding.etHora.setText(horaSeleccionada)
+                    val horaTxt = String.format("%02d:%02d", selectedHour, selectedMinute)
+                    dialogBinding.etHora.setText(horaTxt)
                 }, hora, minuto, true).show()
             }
 
@@ -93,26 +76,20 @@ class MainActivity2 : AppCompatActivity() {
                 .setTitle("Nueva tarea")
                 .setView(dialogBinding.root)
                 .setPositiveButton("Guardar", null)
-                .setNegativeButton("Cancelar") { dialog, _ ->
-                    dialog.dismiss()
-                }
+                .setNegativeButton("Cancelar") { d, _ -> d.dismiss() }
                 .create()
 
             dialog.setOnShowListener {
                 val btnGuardar = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                btnGuardar.setOnClickListener {
 
+                btnGuardar.setOnClickListener {
                     val titulo = dialogBinding.etTitulo.text.toString().trim()
                     val descripcion = dialogBinding.etDescripcion.text.toString().trim()
                     val fecha = dialogBinding.etFecha.text.toString().trim()
                     val hora = dialogBinding.etHora.text.toString().trim()
 
                     if (titulo.isEmpty() || fecha.isEmpty() || hora.isEmpty()) {
-                        Toast.makeText(
-                            this,
-                            "Por favor completa título, fecha y hora",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(this, "Por favor completa título, fecha y hora", Toast.LENGTH_SHORT).show()
                     } else {
                         lifecycleScope.launch {
                             val nuevaTarea = Tarea(
@@ -122,13 +99,14 @@ class MainActivity2 : AppCompatActivity() {
                                 hora = hora,
                                 idPersona = persona.id
                             )
-
                             tareaDao.insertar(nuevaTarea)
 
-                            val tareasActualizadas = tareaDao.getTareasPorPersonaDirecto(persona.id)
-                            adapter.actualizarLista(tareasActualizadas)
+                            // Si la tarea corresponde al día seleccionado, la mostramos
+                            if (fecha == fechaSeleccionada) {
+                                val tareas = tareaDao.getTareasPorFecha(persona.id, fecha)
+                                adapter.actualizarLista(tareas)
+                            }
                         }
-
                         dialog.dismiss()
                     }
                 }
@@ -137,15 +115,12 @@ class MainActivity2 : AppCompatActivity() {
             dialog.show()
         }
 
-
-        // Boton para volver al inicio | Login
-        binding.btnProfile.setOnClickListener {
-            finish()
-        }
+        // Volver atrás
+        binding.btnProfile.setOnClickListener { finish() }
     }
+
     private fun recogerObjetoPersona(): Persona? {
         val key = "persona_key"
-
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(key, Persona::class.java)
         } else {
@@ -155,26 +130,44 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private fun actualizarUI() {
-
-        val persona = recogerObjetoPersona()
-
-        confRecycler(persona!!)
-
+        val persona = recogerObjetoPersona() ?: return
+        confRecycler(persona)
     }
 
     private fun confRecycler(persona: Persona) {
-        adapter = AdapterTarea(mutableListOf())
+        adapter = AdapterTarea(mutableListOf()) { tareaEliminar ->
+            lifecycleScope.launch {
+                tareaDao.eliminar(tareaEliminar)
+                val tareas = tareaDao.getTareasPorFecha(persona.id, fechaSeleccionada)
+                adapter.actualizarLista(tareas)
+                Toast.makeText(this@MainActivity2, "Tarea eliminada", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         binding.rvTareas.layoutManager = LinearLayoutManager(this)
         binding.rvTareas.adapter = adapter
 
-        lifecycleScope.launch {
-            val tareasUser = tareaDao.getTareasPorPersonaDirecto(persona.id)
-            adapter.actualizarLista(tareasUser)
-
+        // Configurar el calendario
+        binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            fechaSeleccionada = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth)
+            lifecycleScope.launch {
+                val tareas = tareaDao.getTareasPorFecha(persona.id, fechaSeleccionada)
+                adapter.actualizarLista(tareas)
+            }
         }
 
+        // Mostrar tareas del día actual al abrir
+        val calendario = Calendar.getInstance()
+        fechaSeleccionada = String.format(
+            "%04d-%02d-%02d",
+            calendario.get(Calendar.YEAR),
+            calendario.get(Calendar.MONTH) + 1,
+            calendario.get(Calendar.DAY_OF_MONTH)
+        )
 
+        lifecycleScope.launch {
+            val tareasHoy = tareaDao.getTareasPorFecha(persona.id, fechaSeleccionada)
+            adapter.actualizarLista(tareasHoy)
+        }
     }
-
-
 }

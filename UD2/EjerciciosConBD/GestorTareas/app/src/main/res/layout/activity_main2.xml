@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,7 +9,7 @@
     android:background="@color/background_light"
     tools:context=".MainActivity2">
 
-    <!-- 1. ENCABEZADO SUPERIOR -->
+    <!-- 1️⃣ ENCABEZADO SUPERIOR -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_container"
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Título principal -->
+        <!-- Título -->
         <TextView
             android:id="@+id/tvHeaderTitle"
             android:layout_width="wrap_content"
@@ -32,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- Botón/Icono de Perfil -->
+        <!-- Botón Perfil -->
         <ImageButton
             android:id="@+id/btnProfile"
             android:layout_width="40dp"
@@ -47,20 +48,38 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 2. RECYCLERVIEW DE TAREAS (Enlazado directamente al header_container) -->
+
+    <!-- 2️⃣ CALENDARIO (debajo del header) -->
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:showWeekNumber="false"
+        android:firstDayOfWeek="2"
+        app:layout_constraintTop_toBottomOf="@id/header_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- 3️⃣ RECYCLERVIEW DE TAREAS -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTareas"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:paddingBottom="80dp"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/header_container"
+        app:layout_constraintTop_toBottomOf="@id/calendarView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar"
         tools:listitem="@layout/item_tarea" />
 
-    <!-- 3. BOTÓN FLOTANTE DE AÑADIR TAREA (FAB) -->
+
+    <!-- 4️⃣ BOTÓN FLOTANTE -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddTask"
         android:layout_width="wrap_content"
@@ -71,10 +90,10 @@
         app:tint="@color/white"
         app:backgroundTint="@color/primary_dark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar"/>
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_bar" />
 
 
-    <!-- 4. BARRA DE NAVEGACIÓN INFERIOR -->
+    <!-- 5️⃣ BARRA DE NAVEGACIÓN INFERIOR -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"

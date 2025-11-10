@@ -1,24 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Gestor" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Base theme Material3 -->
+    <style name="Base.Theme.Gestor" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/background_light</item>
+        <item name="android:windowBackground">@color/background_light</item>
     </style>
 
-    <style name="Theme.Gestor" parent="Base.Theme.Gestor" />
+    <style name="Theme.Gestor" parent="Base.Theme.Gestor">
+
+        <item name="android:windowBackground">@color/white</item>
+    </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#FFFFFF</item>
-        <!-- Nota: outline_calendar_add_on_24 debe ser un drawable válido en tu proyecto. -->
-        <item name="windowSplashScreenAnimatedIcon">@drawable/outline_calendar_add_on_24</item>
-
-        <!-- Ejemplo de uso de un drawable como un item de estilo si fuera necesario en el tema.
-             (Aunque 'shape' no es un atributo de tema estándar, se puede hacer referencia a drawables).
-             Si este elemento no es necesario, puedes ignorarlo. -->
-        <item name="colorAccent">@color/primary_dark</item>
-        <item name="android:windowBackground">@drawable/rounded_profile_bg</item>
-
+        <item name="windowSplashScreenBackground">@color/background_light</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/icono_app</item>
         <item name="postSplashScreenTheme">@style/Theme.Gestor</item>
     </style>
+
 </resources>
