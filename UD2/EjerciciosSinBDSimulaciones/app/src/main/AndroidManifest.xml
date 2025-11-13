@@ -6,27 +6,14 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/outline_calendar_add_on_24"
+        android:icon="@drawable/outline_account_box_24" 
         android:label="@string/app_name"
-        android:roundIcon="@drawable/outline_calendar_add_on_24"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Gestor">
-        <activity
-            android:name=".MainActivity4"
-            android:exported="false" />
-        <activity
-            android:name=".adapter.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity3"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
+        android:theme="@style/Theme.EncuestaCompletaExamen"> <!--MODIFICAR Y LINEA 9-->
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Gestor">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
