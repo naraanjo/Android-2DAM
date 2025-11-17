@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Palette Colors: Dark Teal Contrast -->
+    <color name="colorPrimary">#00897B</color>        <!-- Verde Azulado Oscuro (Toolbar) -->
+    <color name="colorPrimaryDark">#00695C</color>      <!-- Verde Aún Más Oscuro para Status Bar -->
+    <color name="colorAccent">#00BCD4</color>          <!-- Cian Brillante para acentos (SeekBar, Switch) -->
+    <color name="colorBackground">#121212</color>      <!-- Fondo Principal Oscuro (casi negro) -->
+    <color name="colorCard">#1F1F1F</color>           <!-- Fondo de las tarjetas (Gris oscuro para contraste) -->
+    <color name="colorTextPrimary">#E0E0E0</color>     <!-- Texto Principal Gris Claro sobre fondo oscuro -->
+    <color name="colorTextAccent">#FF9800</color>      <!-- Naranja Brillante para títulos y valores clave -->
+    <color name="switch_track_inactive">#505050</color>
+</resources>

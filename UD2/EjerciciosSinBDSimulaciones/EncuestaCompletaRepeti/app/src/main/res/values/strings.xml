@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">EncuestaCompletaExamen</string>
+
+    <string-array name="lista_empresas">
+        <item>Google</item>
+        <item>Microsoft</item>
+        <item>Amazon</item>
+    </string-array>
+
+</resources>

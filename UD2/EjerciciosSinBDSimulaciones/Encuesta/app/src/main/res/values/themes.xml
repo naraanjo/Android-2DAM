@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Tema principal de la aplicación. Usamos un tema oscuro (Dark) y NoActionBar para controlar la Toolbar. -->
+    <style name="Theme.EncuestaMejorada" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary color (Toolbar background) -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <!-- Status Bar color -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <!-- Accent color (Switch, SeekBar, Checkboxes tint) -->
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Window background color -->
+        <item name="android:windowBackground">@color/colorBackground</item>
+
+        <!-- Color del texto en inputs, radiobuttons, etc. -->
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColorHint">#A0A0A0</item>
+
+        <!-- Estilo de los botones: Usaremos el colorAccent (Cian brillante) -->
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>
+    </style>
+
+    <!-- Estilo para el Título de la Toolbar -->
+    <style name="ToolbarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
