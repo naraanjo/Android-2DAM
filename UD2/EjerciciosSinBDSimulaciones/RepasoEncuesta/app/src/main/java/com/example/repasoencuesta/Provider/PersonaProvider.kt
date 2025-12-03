@@ -16,4 +16,13 @@ object  PersonaProvider {
     )
 
     fun getPersons(): MutableList<Persona> = personas
+
+    fun buscarPorNombre(nombre:String): List<Persona> {
+
+        return personas.filter { it.nombre.equals(nombre, ignoreCase = true) }
+    }
+
+    fun elimiarPorNombre(nombre:String): Boolean{
+        return personas.removeIf { it.nombre.equals(nombre, ignoreCase = true) }
+    }
 }

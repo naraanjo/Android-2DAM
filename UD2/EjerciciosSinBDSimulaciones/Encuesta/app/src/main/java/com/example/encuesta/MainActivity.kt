@@ -48,10 +48,13 @@ class MainActivity : AppCompatActivity() {
 
         // Switch
         binding.swtchAnonimo.setOnCheckedChangeListener { _, isChecked ->
-            binding.tvNombre.isEnabled = !isChecked
+            binding.tvNombre.isEnabled = !isChecked //Activa o desactiva OTRO TEXT, para que no pueda poner el nombre
+
+            // Si anonimo esta pulsado Nombre -> ""
             if (isChecked) {
                 binding.tvNombre.setText("")
             }
+
         }
 
         // Boton de validar
@@ -97,6 +100,7 @@ class MainActivity : AppCompatActivity() {
         val esAnonimo = binding.swtchAnonimo.isChecked
         val nombreUsuario = if (esAnonimo || nombreInput.isEmpty()) "Anónimo" else nombreInput
 
+        // Ejemplo de radio button
         val soId = binding.radioGroup.checkedRadioButtonId
         val soPreferido = when (soId) {
             binding.rdbMac.id -> "Mac"

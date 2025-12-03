@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "916744216926",
+    "firebase_url": "https://fir-hoy-aea1f-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "fir-hoy-aea1f",
+    "storage_bucket": "fir-hoy-aea1f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916744216926:android:d5f9f12f17fe314c72afcf",
+        "android_client_info": {
+          "package_name": "com.example.firebasehoy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt1XI8_LjXAH1S-NSJkiL88mH-QCyoV28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
